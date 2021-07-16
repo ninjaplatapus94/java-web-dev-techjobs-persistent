@@ -43,7 +43,6 @@ public class HomeController {
 
         return "index";
     }
-    //TODO addskills and employers as model,addAttributes
     @GetMapping("add")
     public String displayAddJobForm(Model model) {
 
@@ -53,12 +52,6 @@ public class HomeController {
         model.addAttribute(new Job());
         return "add";
     }
-//TODO A user will select an employer when they create a job. Add the employer data from employerRepository into the form template.
-// The add job form already includes an employer selection option.
-// Be sure your variable name for the employer data matches that already used in templates/add.
-
-// TODO In processAddJobForm, add code inside of this method to select the employer object that has been chosen to be affiliated with the new job.
-//  You will need to select the employer using the request parameter you’ve added to the method.
 
     @PostMapping("add")
     public String processAddJobForm(@ModelAttribute @Valid Job newJob,
@@ -69,10 +62,7 @@ public class HomeController {
             return "add";
         }
 
-//        TODO employer class instead of Optional. set employer and skills for job.
-
        Employer employer = employerRepository.findById(employerId).orElse(new Employer());
-//        Employer employer = employerResult.get();
         model.addAttribute("employer", employer);
         newJob.setEmployer(employer);
 
