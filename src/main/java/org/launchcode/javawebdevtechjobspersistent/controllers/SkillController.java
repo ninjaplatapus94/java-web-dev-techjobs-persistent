@@ -18,6 +18,16 @@ public class SkillController {
     @Autowired
     private SkillRepository skillRepository;
 
+    @GetMapping("")
+    public String index(Model model) {
+
+        Iterable skillIndex;
+        skillIndex = skillRepository.findAll();
+        model.addAttribute("skillList", skillIndex);
+
+        return "/skills";
+    }
+
     @GetMapping("add")
     public String displayAddSkillForm(Model model) {
         model.addAttribute(new Skill());
@@ -49,13 +59,7 @@ public class SkillController {
         }
     }
 
-    @GetMapping("/skills")
-    public String listAllSkills(Model model) {
-        Iterable skillIndex;
-        skillIndex = skillRepository.findAll();
-        model.addAttribute("skillList", skillIndex);
-        return "/skills";
-    }
+
 
 
 }

@@ -12,5 +12,5 @@ SELECT *
 FROM employer
 WHERE location = "Saint Louis"
 ## Part 3: Test it with SQL
-
+DROP TABLE IF EXISTS job;
 ## Part 4: Test it with SQL
